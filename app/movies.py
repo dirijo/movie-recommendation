@@ -6,13 +6,20 @@ bp_movies = Blueprint("movies", __name__)
 
 
 @bp_movies.route("/exibir", methods=["GET"])
-def show():
+def list():
     result = Movie.query.all()
     return MovieSchema(many=True).jsonify(result), 200
 
 
+@bp_movies.route("/detalhes/<int:movie_id>", methods=["GET"])
+def detail(movie_id):
+    ms = MovieSchema()
+    result = Movie.query.filter(Movie.id == movie_id).first()
+    return ms.jsonify(result)
+
+
 @bp_movies.route("/cadastrar", methods=["POST"])
-def create_movies():
+def create():
     ms = MovieSchema()
     movie = ms.load(request.json)
     current_app.db.session.add(movie)
@@ -21,14 +28,14 @@ def create_movies():
 
 
 @bp_movies.route("/deletar/<int:movie_id>", methods=["DELETE"])
-def delete_movies(movie_id):
+def delete(movie_id):
     remove_movie = Movie.query.filter(Movie.id == movie_id).delete()
     current_app.db.session.commit()
     return f"ID {movie_id} deletado", 200
 
 
 @bp_movies.route("/atualizar/<int:movie_id>", methods=["PUT"])
-def update_movie(movie_id):
+def update(movie_id):
     ms = MovieSchema()
     movie_data = request.json
     query = Movie.query.filter(Movie.id == movie_id)
