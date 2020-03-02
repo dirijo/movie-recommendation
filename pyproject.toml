@@ -11,9 +11,13 @@ behave = "^1.2.6"
 flask-marshmallow = "^0.11.0"
 psycopg2-binary = "^2.8.4"
 Flask-SQLAlchemy = "^2.4.1"
+flask_migrate = "^2.5.2"
+marshmallow-sqlalchemy = "^0.22.3"
 
 [tool.poetry.dev-dependencies]
 ipdb = "^0.13.1"
+black = "^19.10b0"
+requests = "^2.23.0"
 
 [build-system]
 requires = ["poetry>=0.12"]
