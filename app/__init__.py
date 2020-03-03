@@ -9,9 +9,7 @@ from .serializer import configure as config_ma
 
 def create_app():
     app = Flask(__name__)
-    app.config[
-        "SQLALCHEMY_DATABASE_URI"
-    ] = "sqlite:////home/renanmoura/Documents/code/movie-recommendation/movies.db"
+    app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:////tmp/movies.db"
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = True
     app.config["DEBUG"] = True
 
@@ -20,6 +18,5 @@ def create_app():
     Migrate(app, app.db)
 
     from .movies import bp_movies
-
-    app.register_blueprint(bp_movies)
+    app.register_blueprint(bp_movies, url_prefix='/api/v1')
     return app
