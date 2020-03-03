@@ -11,7 +11,7 @@ def create_app():
     app = Flask(__name__)
     app.config[
         "SQLALCHEMY_DATABASE_URI"
-    ] = "sqlite:////Users/rvmoura/Documents/code/movie-recommendation/movies.db"
+    ] = "sqlite:////tmp/movies.db"
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = True
     app.config["DEBUG"] = True
 
