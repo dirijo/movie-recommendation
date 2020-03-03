@@ -9,6 +9,11 @@ class TestFlaskBase(TestCase):
         self.app_context = self.app.test_request_context()
         self.app_context.push()
         self.client = self.app.test_client()
+
+
+class TestFlaskSystem(TestFlaskBase):
+    def setUp(self):
+        super().setUp()
         self.app.db.create_all()
 
     def tearDown(self):

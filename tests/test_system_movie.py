@@ -1,8 +1,8 @@
 from flask import url_for
-from .flask_base_test_case import TestFlaskBase
+from .flask_base_test_case import TestFlaskSystem
 from app.models import Movie
 
-class TestMovieBP(TestFlaskBase):
+class TestMovieBP(TestFlaskSystem):
     def test_api_should_register_a_movie(self):
         movie = {
             'title': 'a very bad movie'
