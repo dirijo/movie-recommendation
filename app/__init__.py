@@ -18,6 +18,5 @@ def create_app():
     Migrate(app, app.db)
 
     from .movies import bp_movies
-
-    app.register_blueprint(bp_movies)
+    app.register_blueprint(bp_movies, url_prefix='/api/v1')
     return app
