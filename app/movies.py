@@ -1,4 +1,4 @@
-from flask import Blueprint, current_app, jsonify, redirect, request, url_for 
+from flask import Blueprint, current_app, jsonify, redirect, request, url_for
 from .models import Movie
 from .serializer import MovieSchema
 
@@ -17,10 +17,9 @@ def detail(movie_id):
     result = Movie.query.filter(Movie.id == movie_id).first()
     if result:
         return ms.jsonify(result), 200
-    response = {
-        'message': f'404 - ID {movie_id} not found'
-    }
+    response = {"message": f"404 - ID {movie_id} not found"}
     return jsonify(response), 404
+
 
 @bp_movies.route("/create", methods=["POST"])
 def create():
@@ -47,7 +46,7 @@ def update(movie_id):
     query = Movie.query.filter(Movie.id == movie_id).update(request.json)
     current_app.db.session.commit()
     if query:
-        response = {'message': f'200 - ID {movie_id} updated'}
+        response = {"message": f"200 - ID {movie_id} updated"}
         return jsonify(response), 200
-    response = {'message': f'404 - ID {movie_id} not found'}
+    response = {"message": f"404 - ID {movie_id} not found"}
     return jsonify(response), 404
