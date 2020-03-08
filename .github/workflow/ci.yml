@@ -1,0 +1,13 @@
+name: Unittests
+
+on: [push]
+jobs:
+  test_execution:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Running tests
+      run: |
+        sudo apt install python3-setuptools
+        pip3 install -r requirements.txt --user
+        python3 -m unittest discover -v
