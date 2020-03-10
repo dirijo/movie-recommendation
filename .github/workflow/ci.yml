@@ -9,5 +9,7 @@ jobs:
     - name: Running tests
       run: |
         sudo apt install python3-setuptools
+        pip3 install poetry
+        poetry export -f requirements.txt -o requirements.txt
         pip3 install -r requirements.txt --user
         python3 -m unittest discover -v
