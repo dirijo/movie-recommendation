@@ -1,6 +1,0 @@
-flask
-flask-marshmallow
-psycopg2-binary
-Flask-SQLAlchemy
-flask_migrate
-marshmallow-sqlalchemy
