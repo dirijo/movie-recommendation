@@ -4,7 +4,7 @@ from json import load
 from os import makedirs
 from os.path import isdir
 from logging import getLogger, config
-from movie-recomendation.helpers import constants
+from movie_recomendation.helpers import constants
 
 active_tag_value_provider = {
     "config_0": False
